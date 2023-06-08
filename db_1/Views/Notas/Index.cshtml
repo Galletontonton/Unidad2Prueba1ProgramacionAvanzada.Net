@@ -1,0 +1,53 @@
+﻿@model IEnumerable<db_1.Models.Nota>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<center><h1>Notas</h1></center>
+
+<p>
+    <center><a asp-action="Create" class="btn btn-warning">Registrar una Nueva Nota</a></center>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ponderacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asignatura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiante)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nota1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ponderacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asignatura.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estudiante.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Actualizar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Ver</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
